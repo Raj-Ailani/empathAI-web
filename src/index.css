@@ -1,0 +1,186 @@
+body{
+  margin: 0px;
+  margin-left: 200px;
+  margin-right: 200px;
+  
+}
+#header{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: black;
+  border-bottom: 1px solid rgba(102, 102, 102, 0.5);
+
+
+}
+
+
+#logo-cont{
+  width: 200px;
+}
+.logo{
+  width: 100%;
+  object-fit: contain;
+}
+#test{
+  align-items: right;
+}
+
+.nav-item{
+  font-size: 16px;
+  list-style-type: none;
+  color: white;
+
+}
+.nav-item:hover{
+  color: red;
+  text-decoration: none;
+
+}
+#bars{
+  font-size: 30px;
+  color: white;
+}
+
+#all-products{
+  margin-top: 60px;
+}
+
+#all-products h3{
+  margin-left: 20px;
+}
+
+
+#product-name{
+  font-size: 18px;
+}
+
+#login-cont{
+
+  padding: 20px 20px 20px 20px;
+  margin-top: 50px;
+}
+
+#form{
+  margin-top: 10px;
+}
+
+#nav-real{
+  color:red;
+}
+
+#about-cont{
+  margin-top: 50px;
+}
+
+#about-cont h3{
+  font-size: 26px;
+  border-bottom: 1px solid rgba(102, 102, 102, 0.5);
+  padding: 0px 0px 15px 0px ;
+}
+
+#wrong{
+  margin-top: 30px;
+}
+
+
+
+#about-cont p{
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+#about-cont h5{
+  margin-top: 50px;
+}
+
+#details-cont{
+  margin-top: 50px;
+}
+
+#details-cont h3{
+  font-size: 26px;
+  border-bottom: 1px solid rgba(102, 102, 102, 0.5);
+  padding: 0px 0px 15px 0px ;
+} 
+
+#detail-img{
+  margin-top: 40px;
+}
+
+#price{
+  font-weight:bold;
+  font-size: 17px;
+}
+#comment-cont{
+  margin-top: 20px;
+}
+
+#comment-cont h4{
+  margin-top: 40px;
+}
+
+#comment{
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(102, 102, 102, 0.5);
+  margin-top: 20px;
+}
+
+#comment i{
+  font-size: 15px;
+}
+#positive{
+  color: green;
+  font-size: 18px;
+}
+
+#negative{
+  color: red;
+  font-size: 18px;
+
+}
+
+#rating i{
+  font-size: 15px;
+}
+
+#rating-span{
+  margin-left: 10px;
+}
+
+#post-review{
+  margin-top:40px ;
+}
+
+#form{
+  font-size: 15px;
+  margin-top: 20px;
+}
+#big-box{
+  width: 100%;
+  height: 200px;
+}
+
+#no-review{
+  margin: 20px;
+  color: grey;
+}
+
+#product-list{
+  margin-top: 30px;
+}
+
+#product-list-image{
+  width: 70px;
+}
+#report-row h5{
+  margin-top:30px ;
+  font-size: 15px;
+}
+
+@media(max-width:768px){
+  .nav-item{
+    margin-top: 20px;
+    margin-left: 5px;
+  }
+}
