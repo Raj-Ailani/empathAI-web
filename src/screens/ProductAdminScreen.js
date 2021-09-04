@@ -6,6 +6,9 @@ import { listComments } from '../actions/productAction'
 import Loader from '../components/Loader'
 import ProductMoreDetails from '../components/ProductMoreDetails'
 import jwt_decode from "jwt-decode";
+import Chart from "react-google-charts";
+import CommentSection from '../components/CommentSection'
+import SingleCommentSection from '../components/SingleCommentSection'
 
 const ProductAdminScreen = ({match}) => {
 
@@ -23,17 +26,40 @@ const ProductAdminScreen = ({match}) => {
     const [details, setDetails] = useState({})
     const [loading,setLoading] = useState(false)
     const [arrayDetails,setArrayDetails] = useState([])
+    const [report,setReport] = useState([])
+    const [dateReport,setDateReport] = useState([])
 
-    const [review,setReview]=useState('')
-    const [name,setName]=useState('')
+
 
 
     const getProductDetails = async () =>{
         setLoading(true)
         const response = await axios.get(`https://empathbackend.rajailani.tech/api/products/${match.params.id}`)
-        console.log(response.data)
         setDetails(response.data.data)
         setArrayDetails(response.data.data.details)
+       setLoading(false)
+    }
+  
+    const getReportOfProducts = async () =>{
+        let testArr = []
+        setLoading(true)
+        console.log(userInfo.data.token)
+        const config={
+            headers:{
+                'Content-Type':'application/json',
+                Authorization : `${userInfo.data.token}`
+            }
+        }
+        const response = await axios.get(`https://empathbackend.rajailani.tech/api/products/report/${match.params.id}`,config)
+        setReport(response.data.data)
+        console.log(report)
+
+        const resp = await axios.get(`https://empathbackend.rajailani.tech/api/products/date/${match.params.id}`,config)
+        console.log(resp.data)
+      
+        testArr = resp.data.data
+        testArr.splice(0, 0, ['Date', 'No of Comments'])
+        setDateReport(testArr)
        setLoading(false)
     }
   
@@ -45,6 +71,7 @@ const ProductAdminScreen = ({match}) => {
             setjwt(jwtDate)
         }
         getProductDetails()
+        getReportOfProducts()
         dispatch(listComments(match.params.id))
     },[])
 
@@ -71,13 +98,65 @@ const ProductAdminScreen = ({match}) => {
                 <h3> Report</h3>
                 <Container>
                     <Row id='report-row'>
-                        <Col id='report-col'>
+                        <Col md={6}  id='report-col'>
                             <h5>Total Comments</h5> 
+                            <h3>{`${report.totalCount}`}</h3> 
                         </Col>
-                        <Col id='report-col'>
+                        <Col md={6}  id='report-col'>
                         <h5>Sentiment</h5> 
+                        <Chart
+                            width={'500px'}
+                            height={'300px'}
+                           chartType="PieChart"
+                           loader={<div>Loading Chart</div>}
+                           data={[
+                               ['Sentiment', 'No. of Comments'],
+                               ['Positive', report.positiveCount],
+                               ['Negative', report.negativeCount],
+                              
+                           ]}
+                           options={{
+                               is3D: true,
+                             }}
+                      
+                           rootProps={{ 'data-testid': '1' }}
+                       />
                         </Col>
                     </Row>
+                    </Container>
+                    <Container fluid>
+                     {dateReport &&                     <Chart
+                        width={'100%'}
+                        height={'600px'}
+                        chartType="LineChart"
+                        loader={<div>Loading Chart</div>}
+                        data={dateReport}
+                        options={{
+                            hAxis: {
+                              title: 'Date',
+                            },
+                            vAxis: {
+                              title: 'No. Of Comments',
+                            },
+                          }}
+                        
+                        rootProps={{ 'data-testid': '1' }}
+                        />}  
+
+                    </Container>
+                    <Container>
+                    <Row id='report-row'>
+                        <Col md={6} >
+                            <h5>Positive Comments</h5> 
+                            <SingleCommentSection comments={report.positiveComment} />
+                        </Col>
+                        <Col md={6}  id='report-col'>
+                        <h5>Negative Comments</h5> 
+                        <SingleCommentSection comments={report.negativeComment} />
+
+                        </Col>
+                    </Row>
+
                 </Container>
             </Container>
          </>:

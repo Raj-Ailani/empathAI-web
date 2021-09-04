@@ -178,6 +178,14 @@ body{
   font-size: 15px;
 }
 
+#report-col-scroll{
+  margin-top: 50px;
+  overflow: scroll;
+  white-space: nowrap;
+  height: 500px;
+
+}
+
 @media(max-width:768px){
   .nav-item{
     margin-top: 20px;
