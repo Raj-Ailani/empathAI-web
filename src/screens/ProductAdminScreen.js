@@ -147,11 +147,11 @@ const ProductAdminScreen = ({match}) => {
                     <Container>
                     <Row id='report-row'>
                         <Col md={6} >
-                            <h5>Positive Comments</h5> 
+                            <h5>Positive Comments&#40;{`${report.positiveCount}`}&#41;</h5> 
                             <SingleCommentSection comments={report.positiveComment} />
                         </Col>
                         <Col md={6}  id='report-col'>
-                        <h5>Negative Comments</h5> 
+                        <h5>Negative Comments&#40;{`${report.negativeCount}`}&#41;</h5> 
                         <SingleCommentSection comments={report.negativeComment} />
 
                         </Col>
