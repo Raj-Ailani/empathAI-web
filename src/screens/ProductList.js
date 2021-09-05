@@ -22,6 +22,12 @@ const ProductList = ({history}) => {
         dispatch(listProducts())
     },[dispatch])
 
+    const addProduct =()=>{
+        if(jwt.isAdmin){
+       history.push(`/admin/add/product`)
+        }
+    }
+
 
     const test =(id)=>{
         if(jwt.isAdmin){
@@ -69,6 +75,9 @@ const ProductList = ({history}) => {
 
          </tbody>
      </Table>
+     </Container>
+     <Container  id='add-product' >
+     <Button  onClick={()=>addProduct()} ><i  className="fa fa-plus" aria-hidden="true"></i></Button>
      </Container>
      
      

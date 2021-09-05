@@ -186,6 +186,14 @@ body{
 
 }
 
+#add-product{
+  text-align: center;
+
+}
+#add-product i{
+  font-size: 20px;
+}
+
 @media(max-width:768px){
   .nav-item{
     margin-top: 20px;

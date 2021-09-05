@@ -8,6 +8,7 @@ import AboutScreen from '../screens/AboutScreen';
 import ProductDetails from '../screens/ProductDetails';
 import ProductList from '../screens/ProductList';
 import ProductAdminScreen from '../screens/ProductAdminScreen';
+import AddProduct from '../screens/AddProduct';
 
 const Main = () => {
     return (
@@ -18,7 +19,7 @@ const Main = () => {
             <Route path='/about' component={AboutScreen} />
             <Route path='/product/:id' component={ProductDetails} />
             <Route path='/admin/product/:id' component={ProductAdminScreen} />
-
+            <Route path='/admin/add/product' component={AddProduct} />
             <Route path='/admin/productlist' component={ProductList} />
             <Route path='/login' component={LoginScreen} />
             <Route path='/' component={HomeScreen} />
