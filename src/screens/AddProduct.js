@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Button, FormControl, FormLabel } from 'react-bootstrap'
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux'
-import { Container, Form, FormGroup,Row,Col } from 'reactstrap'
+import { Container, Form, FormGroup,Row,Col,Input } from 'reactstrap'
 import { login } from '../actions/userActions'
 import { Link} from 'react-router-dom';
 import jwt_decode from "jwt-decode";
@@ -32,16 +33,30 @@ const AddProduct = () => {
     const {userInfo} =userLogin
     const [jwt, setjwt] = useState()
     const dispatch = useDispatch()
-    
+
 
     useEffect( ()=>{
         if(userInfo){
             const jwtDate = jwt_decode(userInfo.data.token)
-            console.log(jwtDate)
+
             setjwt(jwtDate)
         }
     },[])
 
+    const { register, handleSubmit, reset, watch } = useForm({});
+
+
+    const detail_desp = watch('detail-desp');
+
+
+    function ticketNumbers() {
+        return [...Array(parseInt(detail_desp || 1)).keys()];
+    }
+    function onSubmit(data) {
+        console.log(data)
+        // display form data on success
+        alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
+    }
 
     return (
         <>
@@ -50,7 +65,7 @@ const AddProduct = () => {
             <Container id='add-product-cont' fluid >
                 <h3>Add Product</h3>
                <Container fluid>
-                <Form  id='form'> 
+                <Form  id='form'  onSubmit={handleSubmit(onSubmit)} onReset={reset}> 
                 <Row>
                     <Col>
                     <FormGroup controlId='email' >
@@ -67,13 +82,43 @@ const AddProduct = () => {
              </FormGroup>
                     </Col>
                 </Row>
-
                 <Row>
-                <FormGroup controlId='review' >
-                <FormLabel>Product Description: </FormLabel>
-                <textarea id='big-box' type='description' placeholder='Enter Description'></textarea>
-                </FormGroup>    
-                </Row>
+                    <Col>
+                    <FormGroup controlId='no_desp' >
+                 <FormLabel>Number of Detail Description want to enter: &nbsp;</FormLabel>
+                 <select  type="select" name="detail-desp" {...register("detail-desp")} >
+                 {[1,2,3,4,5].map(i => 
+                                    <option key={i} value={i}>{i}</option>
+                                )}
+                    </ select >
+
+                    </FormGroup>
+                    </Col>
+                    <Col>
+                    </Col>
+                    </Row>
+                <h5>Product Description</h5>
+
+                {
+                    ticketNumbers().map(i => (                
+                    <Row  key={i}>
+                        <Col>
+                        <FormGroup controlId='title' >
+                     <FormLabel>Title </FormLabel>
+                     <FormControl type='title' placeholder='Enter Title ' 
+                    ></FormControl>
+                 </FormGroup>
+                        </Col>
+                        <Col>
+                    <FormGroup controlId='review' >
+                    <FormLabel>Product Description: </FormLabel>
+                    <textarea id='big-box' type='description' placeholder='Enter Description'></textarea>
+                    </FormGroup>    
+                    </Col>
+                    </Row>))
+                }
+
+             
               
 
 
