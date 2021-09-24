@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Container, Form, FormGroup,Row,Col } from 'reactstrap'
 import { login } from '../actions/userActions'
 import { Link} from 'react-router-dom';
+import jwt_decode from "jwt-decode";
+
 // name:{
 //     type:String,
 //     required:true,
@@ -25,8 +27,26 @@ import { Link} from 'react-router-dom';
 //    desp:String
 //  }]
 const AddProduct = () => {
+
+    const userLogin = useSelector(state => state.userLogin)
+    const {userInfo} =userLogin
+    const [jwt, setjwt] = useState()
+    const dispatch = useDispatch()
+    
+
+    useEffect( ()=>{
+        if(userInfo){
+            const jwtDate = jwt_decode(userInfo.data.token)
+            console.log(jwtDate)
+            setjwt(jwtDate)
+        }
+    },[])
+
+
     return (
         <>
+         {jwt && jwt.isAdmin ? 
+
             <Container id='add-product-cont' fluid >
                 <h3>Add Product</h3>
                <Container fluid>
@@ -65,6 +85,9 @@ const AddProduct = () => {
          </Form>
          </Container>
             </Container>
+            :
+            <Container >
+            <h3 id='not-auth' >Not Authorized.....Please Login With Admin</h3></Container> }
         </>
     )
 }

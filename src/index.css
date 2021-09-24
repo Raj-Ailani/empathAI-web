@@ -228,6 +228,11 @@ body {
   margin-left: 30px;
 }
 
+#not-auth {
+  margin-top: 50px;
+  text-transform: none;
+}
+
 @media (max-width: 768px) {
   .nav-item {
     margin-top: 20px;

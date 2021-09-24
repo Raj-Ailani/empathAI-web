@@ -83,7 +83,8 @@ const ProductList = ({history}) => {
      
      
      </>:
-     <h3>Not Authorized</h3> }
+     <Container  >
+     <h3 id='not-auth' >Not Authorized.....Please Login With Admin</h3></Container> }
            
         </>
     )
