@@ -12,7 +12,7 @@ export const login =(email,password)=> async(dispatch) =>{
                 'Content-Type':'application/json'
             }
         }
-        const {data} =await axios.post('https://empathbackend.rajailani.tech/api/login',{email,password},config)
+        const {data} =await axios.post('http://localhost:4001/api/login',{email,password},config)
 
 
         dispatch({
@@ -52,7 +52,7 @@ export const register =(name,email,password)=> async(dispatch) =>{
                 'Content-Type':'application/json'
             }
         }
-        const {data} =await axios.post('https://empathbackend.rajailani.tech/api/register',{name,email,password},config)
+        const {data} =await axios.post('http://localhost:4001/api/register',{name,email,password},config)
 
 
         dispatch({
