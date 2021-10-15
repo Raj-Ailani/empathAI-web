@@ -9,30 +9,35 @@ const AboutScreen = () => {
                     About Us
                 </h3>
                 <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat, ante et vehicula convallis, ligula nunc faucibus arcu, et eleifend nunc enim ac massa. Fusce velit quam, feugiat non tristique nec, fringilla et sem. Proin quam odio, mollis interdum mi a, pellentesque condimentum mauris. Nam porta mi ullamcorper elit consequat, tincidunt elementum ex rhoncus. Vivamus rhoncus mi id ex venenatis, eget volutpat dolor rhoncus. Pellentesque mauris 
-                lacus, euismod quis sodales non, ultricies eget velit. Proin magna leo,
-                 euismod vel pretium pretium, maximus in est. Vestibulum posuere lacus elit, 
-                 vitae mollis turpis sagittis vel. Maecenas ipsum mi, dignissim accumsan mattis vel, elementum vel ante.
+                As we all know online shopping has increased many folds  and for any product to be a  success we need feedback of our 
+                customers as to what they want ,what their needs are and how can we improve our product  to cater to  their never ending demands. 
+                There is already a lot of customer data available and scrutinizing it in a correct and most efficient way will go a 
+                long way in making any product yield the best possible outcome . 
                 </p>
-  
+                <p>
+                So what the problem is that although a lot of this information is already present but for a human mind to read all this information and process it will not only be time consuming but might also not be fruitful . 
+                due to this  lack in  human capacity the gap btw a seller and its comsumer is increasing leading to negative branding of companies. 
+                </p>
+                <p>
+                For  situations like this  our product will be useful.
+                <strong>Empath AI</strong> as the name suggests will help in recognising its cusmers sentiments . it is an internet monitoring tool combined with advanced sentiment analysis 
+                working together to protect your brand and help in solving all the problems i mentioned in the above slides
+                </p>
 
                 <h5>
                     Sentiment-Analysis
                 </h5>
                 <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat, ante et vehicula convallis, ligula nunc faucibus arcu, et eleifend nunc enim ac massa. Fusce velit quam, feugiat non tristique nec, fringilla et sem. Proin quam odio, mollis interdum mi a, pellentesque condimentum mauris. Nam porta mi ullamcorper elit consequat, tincidunt elementum ex rhoncus. Vivamus rhoncus mi id ex venenatis, eget volutpat dolor rhoncus. Pellentesque mauris 
-                lacus, euismod quis sodales non, ultricies eget velit. Proin magna leo,
-                 euismod vel pretium pretium, maximus in est. Vestibulum posuere lacus elit, 
-                 vitae mollis turpis sagittis vel. Maecenas ipsum mi, dignissim accumsan mattis vel, elementum vel ante.
+                Sentiment analysis (also known as opinion mining or emotion AI) is the use of natural language processing, text analysis,
+                computational linguistics, and biometrics to systematically identify, extract, quantify, and study affective states and 
+                subjective information. Sentiment analysis is widely applied to voice of the customer materials such as reviews and survey 
+                responses, online and social media, and healthcare materials for applications that range from marketing to customer service to
+                 clinical medicine.
                 </p>
                 <p>
-                Etiam efficitur viverra orci, eu tempus odio volutpat quis. Sed ut ipsum sagittis, 
-                laoreet lectus ac, pulvinar lorem. Curabitur elit dui, accumsan vel maximus a, porttitor eget mauris. 
-                Aenean aliquam ut tellus in suscipit. Suspendisse potenti. Duis semper quam libero, at egestas elit rhoncus 
-                sit amet. Aliquam vulputate erat eros, vitae dictum ante feugiat ut. Nulla nec quam ligula. Nunc fermentum 
-                leo eget arcu semper convallis. Vestibulum enim risus, egestas vitae risus non, pharetra imperdiet lectus. 
-                In quam est, commodo sed lorem hendrerit, dignissim consequat magna.
-                </p>
+                Subjective and objective identification, emerging subtasks of sentiment analysis to use syntactic, semantic features, 
+                and machine learning knowledge to identify a sentence or document are facts or opinions.
+                    </p>
             </Container>
         </div>
     )

@@ -10,6 +10,7 @@ import ProductList from '../screens/ProductList';
 import ProductAdminScreen from '../screens/ProductAdminScreen';
 import AddProduct from '../screens/AddProduct';
 import UnderConstruction from './UnderConstruction';
+import Footer from './Footer';
 
 const Main = () => {
     return (

@@ -233,6 +233,16 @@ body {
   text-transform: none;
 }
 
+#footer {
+  background-color: rgb(211, 211, 211);
+  height: 100px;
+  padding: 20px;
+}
+
+#footer-content h5 {
+  font-size: 14px;
+}
+
 @media (max-width: 768px) {
   .nav-item {
     margin-top: 20px;
