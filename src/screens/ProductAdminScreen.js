@@ -4,7 +4,6 @@ import {useDispatch,useSelector} from 'react-redux'
 import { Col, Container, Row } from 'reactstrap'
 import { listComments } from '../actions/productAction'
 import Loader from '../components/Loader'
-import ProductMoreDetails from '../components/ProductMoreDetails'
 import jwt_decode from "jwt-decode";
 import Chart from "react-google-charts";
 import CommentSection from '../components/CommentSection'
@@ -90,7 +89,7 @@ const ProductAdminScreen = ({match}) => {
                  <p id='detail-img'>{details.description}</p>
                  <p id='price'><b>Price :- {details.avgPrice}₹</b></p>
                  <h5>Details</h5>
-                 <ProductMoreDetails detail = {arrayDetails}></ProductMoreDetails>
+              
              </Col>
          </Row>
          </Container>

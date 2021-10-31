@@ -6,6 +6,8 @@ import { Container, Form, FormGroup,Row,Col,Input } from 'reactstrap'
 import { login } from '../actions/userActions'
 import { Link} from 'react-router-dom';
 import jwt_decode from "jwt-decode";
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 // name:{
 //     type:String,
@@ -33,7 +35,10 @@ const AddProduct = () => {
     const {userInfo} =userLogin
     const [jwt, setjwt] = useState()
     const dispatch = useDispatch()
-
+    const [name,setName]=useState('')
+    const [avgPrice,setAvgPrice]=useState(0)
+    const [image,setImage]=useState('')
+    const [desp,setDesp]=useState('')
 
     useEffect( ()=>{
         if(userInfo){
@@ -43,19 +48,20 @@ const AddProduct = () => {
         }
     },[])
 
-    const { register, handleSubmit, reset, watch } = useForm({});
 
 
-    const detail_desp = watch('detail-desp');
 
 
-    function ticketNumbers() {
-        return [...Array(parseInt(detail_desp || 1)).keys()];
-    }
-    function onSubmit(data) {
-        console.log(data)
+
+    const onSubmit = async (e)=>{
+      
         // display form data on success
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
+        const resp = {}
+        resp.name = name
+        resp.avgPrive = avgPrice
+        resp.image = image
+        resp.description = desp
+        console.log(resp)
     }
 
     return (
@@ -65,58 +71,39 @@ const AddProduct = () => {
             <Container id='add-product-cont' fluid >
                 <h3>Add Product</h3>
                <Container fluid>
-                <Form  id='form'  onSubmit={handleSubmit(onSubmit)} onReset={reset}> 
+                <Form  id='form'  onSubmit={onSubmit} > 
                 <Row>
                     <Col>
-                    <FormGroup controlId='email' >
+                    <FormGroup controlId='name' >
                  <FormLabel>Name: </FormLabel>
-                 <FormControl type='name' placeholder='Enter Name' 
+                 <FormControl type='name' placeholder='Enter Name' name="name" value={name}  onChange={(e)=>setName(e.target.value)}
                 ></FormControl>
              </FormGroup>
                     </Col>
                     <Col>
-                    <FormGroup controlId='email' >
+                    <FormGroup controlId='avgPrice' >
                  <FormLabel>Average Price: </FormLabel>
-                 <FormControl type='number' placeholder='Enter Price' 
+                 <FormControl type='number' placeholder='Enter Price' name="avgPrice" value={avgPrice}  onChange={(e)=>setAvgPrice(e.target.value)}
                 ></FormControl>
              </FormGroup>
                     </Col>
                 </Row>
                 <Row>
+                   
                     <Col>
-                    <FormGroup controlId='no_desp' >
-                 <FormLabel>Number of Detail Description want to enter: &nbsp;</FormLabel>
-                 <select  type="select" name="detail-desp" {...register("detail-desp")} >
-                 {[1,2,3,4,5].map(i => 
-                                    <option key={i} value={i}>{i}</option>
-                                )}
-                    </ select >
-
-                    </FormGroup>
-                    </Col>
-                    <Col>
+                    <FormGroup controlId='image' >
+                 <FormLabel>Upload image: </FormLabel>
+                 <FormControl type='file' value={image} name="image"  onChange={(e)=>setImage(e.target.value)}
+                ></FormControl>
+             </FormGroup>
                     </Col>
                     </Row>
                 <h5>Product Description</h5>
-
-                {
-                    ticketNumbers().map(i => (                
-                    <Row  key={i}>
-                        <Col>
-                        <FormGroup controlId='title' >
-                     <FormLabel>Title </FormLabel>
-                     <FormControl type='title' placeholder='Enter Title ' 
-                    ></FormControl>
-                 </FormGroup>
-                        </Col>
-                        <Col>
-                    <FormGroup controlId='review' >
-                    <FormLabel>Product Description: </FormLabel>
-                    <textarea id='big-box' type='description' placeholder='Enter Description'></textarea>
-                    </FormGroup>    
-                    </Col>
-                    </Row>))
-                }
+                <FormGroup controlId='desp' >
+                 <FormLabel>Description: </FormLabel>
+                 <textarea  id='big-box' type='text' value={desp} name="desp"  onChange={(e)=>setDesp(e.target.value)}
+                ></textarea>
+             </FormGroup>
 
              
               

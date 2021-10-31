@@ -4,7 +4,6 @@ import {useDispatch,useSelector} from 'react-redux'
 import { Col, Container, Row } from 'reactstrap'
 import CommentSection from '../components/CommentSection'
 import Loader from '../components/Loader'
-import ProductMoreDetails from '../components/ProductMoreDetails'
 import {Form,Button, FormGroup, FormLabel, FormControl} from 'react-bootstrap'
 import FormContainer from '../components/FormContainer'
 import { listComments } from '../actions/productAction'
@@ -84,8 +83,7 @@ const ProductDetails = ({history,match}) => {
                     <Col>
                         <p id='detail-img'>{details.description}</p>
                         <p id='price'><b>Price :- {details.avgPrice}₹</b></p>
-                        <h5>Details</h5>
-                        <ProductMoreDetails detail = {arrayDetails}></ProductMoreDetails>
+                      
                     </Col>
                 </Row>
                 <Container>
