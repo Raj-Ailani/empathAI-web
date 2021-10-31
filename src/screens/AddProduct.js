@@ -8,6 +8,7 @@ import { Link} from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import axios from 'axios';
 
 // name:{
 //     type:String,
@@ -24,11 +25,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 // avgPrice:{
 //   type:Number,
 //   required:true,
-// },
-//    details:[{
-//    title:String,
-//    desp:String
-//  }]
+// }
 const AddProduct = () => {
 
     const userLogin = useSelector(state => state.userLogin)
@@ -53,8 +50,8 @@ const AddProduct = () => {
 
 
 
-    const onSubmit = async (e)=>{
-      
+    const submitHandler = async (e)=>{
+        e.preventDefault()
         // display form data on success
         const resp = {}
         resp.name = name
@@ -62,6 +59,17 @@ const AddProduct = () => {
         resp.image = image
         resp.description = desp
         console.log(resp)
+
+        console.log(resp)
+        const {data} =  await axios.post(`http://localhost:4001/api/products`,resp )
+        if(data){
+            window.location.reload()
+            console.log('Success')
+        }
+        else{
+            console.log('Failed')
+        }
+
     }
 
     return (
@@ -71,7 +79,7 @@ const AddProduct = () => {
             <Container id='add-product-cont' fluid >
                 <h3>Add Product</h3>
                <Container fluid>
-                <Form  id='form'  onSubmit={onSubmit} > 
+                <Form  id='form'  onSubmit={submitHandler} > 
                 <Row>
                     <Col>
                     <FormGroup controlId='name' >
