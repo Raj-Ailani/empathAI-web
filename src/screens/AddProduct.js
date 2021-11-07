@@ -55,13 +55,18 @@ const AddProduct = () => {
         // display form data on success
         const resp = {}
         resp.name = name
-        resp.avgPrive = avgPrice
+        resp.avgPrice = avgPrice
         resp.image = image
         resp.description = desp
-        console.log(resp)
+        
+        const config={
+            headers:{
+      
+                Authorization :userInfo.data.token
+            }
+        }
 
-        console.log(resp)
-        const {data} =  await axios.post(`http://localhost:4001/api/products`,resp )
+        const {data} =  await axios.post(`http://localhost:4001/api/products`,resp ,config)
         if(data){
             window.location.reload()
             console.log('Success')

@@ -5,6 +5,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { Button, Container, Table } from 'reactstrap'
 import { listProducts } from '../actions/productAction'
 import jwt_decode from "jwt-decode";
+import axios from 'axios';
 
 const ProductList = ({history}) => {
     const userLogin = useSelector(state => state.userLogin)
@@ -13,6 +14,23 @@ const ProductList = ({history}) => {
     const dispatch = useDispatch()
     const productList = useSelector(state => state.productList)
     const {loading,error,products} = productList
+
+
+    const deleteProduct= async(id)=>{
+        console.log('Inside Delete Function')
+        const resp = {
+            isDeleted :true
+        }
+        const config={
+            headers:{
+                Authorization :userInfo.data.token
+            }
+        }
+
+        const {data} =  await axios.put(`http://localhost:4001/api/products/${id}`,resp ,config)
+        window.location.reload()
+    }
+
     useEffect( ()=>{
         if(userInfo){
             const jwtDate = jwt_decode(userInfo.data.token)
@@ -29,7 +47,7 @@ const ProductList = ({history}) => {
     }
 
 
-    const test =(id)=>{
+    const redirect =(id)=>{
         if(jwt.isAdmin){
        history.push(`/admin/product/${id}`)
         }
@@ -57,16 +75,19 @@ const ProductList = ({history}) => {
          </tr>
          <tbody>
              {products && products.map((product)=>(
-                 <tr onClick={()=>test(product._id)} key={product._id} >
-                     <td >  <Image src={product.image} alt={product.name} fluid rounded id='product-list-image'/></td>
+                 <tr  key={product._id} >
+                     <td onClick={()=>redirect(product._id)}>  <Image src={product.image} alt={product.name} fluid rounded id='product-list-image'/></td>
                  
-                     <td>{product.name}</td> 
+                     <td onClick={()=>redirect(product._id)}>{product.name}</td> 
                     
-                     <td>
+                     <td onClick={()=>redirect(product._id)}>
                          {`₹${product.avgPrice}`
                          }
                      </td>
+                     <td>
+                     <i class="fa fa-trash" aria-hidden="true" onClick={()=>deleteProduct(product._id)}></i>
 
+                     </td>
                  </tr>
              ))
 
