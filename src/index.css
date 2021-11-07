@@ -138,6 +138,7 @@ body {
 
 #detail-img {
   margin-top: 40px;
+  width: 100%;
 }
 
 #price {
@@ -241,6 +242,10 @@ body {
 
 #footer-content h5 {
   font-size: 14px;
+}
+
+#card-its {
+  height: 100%;
 }
 
 @media (max-width: 768px) {
