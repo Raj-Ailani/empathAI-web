@@ -19,7 +19,7 @@ const CommentSection = ({comments}) => {
     <Container id= 'comment-cont'>
         <h4>Recent Comments</h4>
         <Container >
-                {comments === 0 ?   comments.slice(0, 3).map(comment =>(
+                {comments  ?   comments.slice(0, 3).map(comment =>(
                     <div id='comment'>
                 <span id='price'><b>{comment.name}</b></span><br/>
                 <span>{formatDate(comment.createdAt)}</span>
@@ -34,6 +34,7 @@ const CommentSection = ({comments}) => {
                 ))
                 :
                 <h5 id='no-review'>No Reviews to show</h5>
+
             }
             
         </Container>
