@@ -26,7 +26,7 @@ import axios from 'axios';
 //   type:Number,
 //   required:true,
 // }
-const AddProduct = () => {
+const AddProduct = ({history}) => {
 
     const userLogin = useSelector(state => state.userLogin)
     const {userInfo} =userLogin
@@ -67,12 +67,8 @@ const AddProduct = () => {
         }
 
         const {data} =  await axios.post(`http://localhost:4001/api/products`,resp ,config)
-        if(data){
-            window.location.reload()
-            console.log('Success')
-        }
-        else{
-            console.log('Failed')
+        if(data.success){
+            history.push('/admin/productlist')
         }
 
     }
