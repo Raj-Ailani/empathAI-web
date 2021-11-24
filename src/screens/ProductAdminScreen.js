@@ -33,7 +33,7 @@ const ProductAdminScreen = ({match}) => {
 
     const getProductDetails = async () =>{
         setLoading(true)
-        const response = await axios.get(`http://localhost:4001/api/products/${match.params.id}`)
+        const response = await axios.get(`http://127.0.0.1:4001/api/products/${match.params.id}`)
         setDetails(response.data.data)
         setArrayDetails(response.data.data.details)
        setLoading(false)
@@ -49,11 +49,11 @@ const ProductAdminScreen = ({match}) => {
                 Authorization : `${userInfo.data.token}`
             }
         }
-        const response = await axios.get(`http://localhost:4001/api/products/report/${match.params.id}`,config)
+        const response = await axios.get(`http://127.0.0.1:4001/api/products/report/${match.params.id}`,config)
         setReport(response.data.data)
         console.log(report)
 
-        const resp = await axios.get(`http://localhost:4001/api/products/date/${match.params.id}`,config)
+        const resp = await axios.get(`http://127.0.0.1:4001/api/products/date/${match.params.id}`,config)
         console.log(resp.data)
       
         testArr = resp.data.data

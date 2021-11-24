@@ -66,7 +66,7 @@ const AddProduct = ({history}) => {
             }
         }
 
-        const {data} =  await axios.post(`http://localhost:4001/api/products`,resp ,config)
+        const {data} =  await axios.post(`http://127.0.0.1:4001/api/products`,resp ,config)
         if(data.success){
             history.push('/admin/productlist')
         }

@@ -27,7 +27,7 @@ const ProductList = ({history}) => {
             }
         }
 
-        const {data} =  await axios.put(`http://localhost:4001/api/products/${id}`,resp ,config)
+        const {data} =  await axios.put(`http://127.0.0.1:4001/api/products/${id}`,resp ,config)
         window.location.reload()
     }
 

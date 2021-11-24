@@ -4,7 +4,7 @@ import { COMMENT_LIST_FAIL, COMMENT_LIST_REQUEST, COMMENT_LIST_SUCCESS, PRODUCT_
 export const listProducts = () => async(dispatch) =>{
     try {
         dispatch({type:PRODUCT_LIST_REQUEST})
-        const {data} =await axios.get('http://localhost:4001/api/products')
+        const {data} =await axios.get('http://127.0.0.1:4001/api/products')
         dispatch({
             type:PRODUCT_LIST_SUCCESS,
             payload:data.data,
@@ -25,7 +25,7 @@ export const listComments = (id) => async(dispatch) =>{
         
         dispatch({type:COMMENT_LIST_REQUEST})
         console.log(id)
-        const {data} =await axios.get(`http://localhost:4001/api/products/comment/${id}`)
+        const {data} =await axios.get(`http://127.0.0.1:4001/api/products/comment/${id}`)
         dispatch({
             type:COMMENT_LIST_SUCCESS,
             payload:data.data,

@@ -33,7 +33,7 @@ const ProductDetails = ({history,match}) => {
         resp.name = name
       
         console.log(resp)
-        const {data} =  await axios.post(`http://localhost:4001/api/products/comment`,resp )
+        const {data} =  await axios.post(`http://127.0.0.1:4001/api/products/comment`,resp )
         if(data){
             window.location.reload()
             console.log('Success')
@@ -49,7 +49,7 @@ const ProductDetails = ({history,match}) => {
 
     const getProductDetails = async () =>{
         setLoading(true)
-        const response = await axios.get(`http://localhost:4001/api/products/${match.params.id}`)
+        const response = await axios.get(`http://127.0.0.1:4001/api/products/${match.params.id}`)
         console.log(response.data)
         setDetails(response.data.data)
         setArrayDetails(response.data.data.details)
